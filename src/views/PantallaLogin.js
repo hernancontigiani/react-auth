@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {TodosAPI} from '../api/TodosAPI'
 import {updateToken} from '../api/client'
 
-const APIview = ({setAuth}) => {
+const PantallaLogin = ({setAuth}) => {
   const [data, setData] = useState("CARGANDO...")
 
   let navigate = useNavigate();
@@ -17,15 +17,9 @@ const APIview = ({setAuth}) => {
 
     TodosAPI.getAll().then((data) => {
       setData(JSON.stringify(data))
-      sessionStorage.setItem('isAuthenticated', 'true');
-      setAuth(true);
-      // navigate("/private");
 
     });
 
-    // const response = await fetch('https://jsonplaceholder.typicode.com/todos')
-    // const json = await response.json()
-    // setData(JSON.stringify(json))
   }
 
   const update = () => {
@@ -47,11 +41,11 @@ const APIview = ({setAuth}) => {
   return (
     <>
       <div>
-      <button onClick={download}>DOWNLOAD</button>
-      <button onClick={update}>UPDATE TOKEN</button>
+        <button onClick={download}>DOWNLOAD</button>
+        <button onClick={update}>UPDATE TOKEN</button>
       </div>
       <div>
-      <button onClick={handleLogin}>LOGIN</button>
+        <button onClick={handleLogin}>LOGIN</button>
         <button onClick={handleLogout}>LOGOUT</button>
       </div>
       {data}
@@ -59,4 +53,4 @@ const APIview = ({setAuth}) => {
   )
 }
 
-export default APIview
+export default PantallaLogin
